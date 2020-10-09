@@ -40,17 +40,43 @@ int main()
 			sum[2]++;
 		}
 	}
-	for(y=0;y<sum[0];y++)
+	if(sum[1]!=0||sum[2]!=0)
 	{
-		printf("1,");
+	    for(y=0;y<sum[0];y++)
+	    {
+	    	printf("1,"); 
+	    }
+    }
+    else
+    {
+    	for(y=0;y<sum[0]-1;y++)
+	    {
+	    	printf("1,"); 
+	    }
+	    printf("1"); 
 	}
-	for(y=0;y<sum[1];y++)
+	if(sum[2]!=0)
 	{
-		printf("2,");
+		for(y=0;y<sum[1];y++)
+	    {
+	    	printf("2,");
+	    }
 	}
-	for(y=0;y<sum[2];y++)
+	else
 	{
-		printf("3,");
+		for(y=0;y<sum[1]-1;y++)
+	    {
+		    printf("2,");
+    	}
+	    printf("2");
+	 }
+	if(sum[2]!=0)
+	{
+		for(y=0;y<sum[2]-1;y++)
+	    {
+		    printf("3,");
+	    }
+	    printf("3");
 	}
 	return 0;
 }
