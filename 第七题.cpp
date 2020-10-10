@@ -1,44 +1,67 @@
 #include<stdio.h>
-#include<iostream>
-#include <string>
-#include<vector>
-using namespace std;
-bool raoluan(string s1,string s2)
+#include<string.h>
+int main() 
 {
-    if(s1==s2)  return true;
-    int arr[26]={0};
-    for(int i=0;i<s1.length();++i)
-	{
-	    arr[s1[i]-'a']++;
-	    arr[s2[i]-'a']--;
+	int len=0,x=0,y=0,zhenjia=0,z1=0,z2=0;
+	int c1,c2;
+    char a[100];
+    char b[100];
+    int zimu[100];
+    int zimu1[100];
+    scanf("%s",a);
+    scanf("%s",b);
+    x=strlen(a);y=strlen(b);
+    if(x!=y)
+    {
+    	zhenjia=0;
 	}
-    for(int i=0;i<26;++i)
+	else
 	{
-	    if(arr[i])
-	    {
-	        return false;
+		for(x=0;x<y-1;x++)
+		{
+			z1=0;
+			z2=0;
+	        for(int h=0;h<27;h++)
+	        {
+		        zimu[h]=0;
+		        zimu1[h]=0;
+		        for(int i=0;i<=x;i++)
+		        {
+			        if(a[i]=='a'+h)
+			        zimu[h]++;
+			        if(b[i]=='a'+h)
+			        zimu1[h]++;
+		        }
+		        if(zimu[h]!=zimu1[h])
+		        z1++;
+		    }
+		    for(int h=0;h<27;h++)
+	        {
+		        zimu[h]=0;
+		        zimu1[h]=0;
+		        for(int i=x+1;i<y;i++)
+		        {
+			        if(a[i]=='a'+h)
+			        zimu[h]++;
+			        if(b[i]=='a'+h)
+			        zimu1[h]++;
+		        }
+		        if(zimu[h]!=zimu1[h])
+		        z2++;
+		    }
+		    if(z1==0&&z2==0)
+		    {
+		    	zhenjia++;
+			}
 	    }
     }
-    for(int i=1;i<s1.length();++i)
+    if(zhenjia==0)
+    {
+    	printf("false");
+	}
+	else
 	{
-        if(raoluan(s1.substr(0,i),s2.substr(0,i))&&raoluan(s1.substr(i),s2.substr(i)))
-		{
-		   return true;
-	    }
-        if(raoluan(s1.substr(0,i),s2.substr(s1.length()-i))&&raoluan(s1.substr(i),s2.substr(0,s1.length()-i)))
-		{
-		   return true;
-	    }
-    }
-        return false;
-}
-int main()
-{
-	string s1;
-	string s2;
-	scanf("%s",&s1);
-	scanf("%s",&s2);
-	raoluan(s1, s2);
-	printf("%d",raoluan);
-	return 0;
+		printf("true");
+	}
+    return 0;
 }
